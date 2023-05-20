@@ -17,7 +17,10 @@ const ratings: {
 const RatingBlock: React.FC<RatingBlockProps> = ({ onRating }) => {
     const [totalRating, setTotalRating] = useState<number>(0);
 
-    const handleRating = (value: number) => {
+    const handleRating = (e: any, value: number) => {
+        e.stopPropagation();
+        e.preventDefault();
+
         if(value === totalRating){            
             setTotalRating(totalRating - 1)
         }else{
@@ -29,7 +32,7 @@ const RatingBlock: React.FC<RatingBlockProps> = ({ onRating }) => {
         if(totalRating > 0){
             onRating(totalRating)
         }
-    }, [totalRating])
+    }, [totalRating]);
 
     return (
         <div className="rating-block">
@@ -38,7 +41,7 @@ const RatingBlock: React.FC<RatingBlockProps> = ({ onRating }) => {
                     [...Array(5)].map((item, index) => {
                         let isSelected = (index + 1) <= totalRating ? "is-selected" : "";
 
-                            return <span key={"star-"+index} className={isSelected} onClick={() => handleRating(index + 1)}></span>
+                            return <span key={"star-"+index} className={isSelected} onClick={(e) => handleRating(e, index + 1)}></span>
                         }
                     )
                 }

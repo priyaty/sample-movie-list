@@ -9,7 +9,7 @@ const CardList = () => {
     return (
         <div>
             {state.movies.length > 0 && <ul className='card-list'>
-            {state.movies.map((item: Movie, index: number) => {
+            {state.movies.map((item: Movie) => {              
               return <li key={item.id} className='card-item'>
               <Card {...item}/>
             </li>

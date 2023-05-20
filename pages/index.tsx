@@ -19,9 +19,7 @@ export default function Home() {
       </Head>
       <main>
         Home page
-        <MovieProvider>
-          <CardList/>
-        </MovieProvider>
+        <CardList/>
       </main>
     </>
   )

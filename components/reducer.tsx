@@ -16,7 +16,7 @@ interface MoviesState {
 export const reducer = (state: MoviesState, action: any) => {
     switch (action.type) {
       case 'FETCH':
-        
+
         let fetchedData = {
           movies: [...action.payload.data]
         };
@@ -37,7 +37,8 @@ export const reducer = (state: MoviesState, action: any) => {
         return { ...newList };
 
         case 'RATE':
-
+          console.log('rainte');
+          
           let moviesList = [...state.movies];
           let movieToRate = moviesList.findIndex(item => item.id === action.payload.movieId)
           

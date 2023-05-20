@@ -1,6 +1,6 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
-import { Movie, reducer } from "./reducer";
-import { getMovies } from "@/pages/api/movies";
+import { createContext, useEffect, useReducer } from "react";
+import { reducer } from "./reducer";
+import { getData } from "@/pages/api/movies";
 
 type MovieProviderProps = {
     children: React.ReactNode
@@ -15,22 +15,17 @@ export const MovieProvider: React.FC<MovieProviderProps> = ({ children }) => {
     
     useEffect(() => {
         const fetchMovies = async () => {
-            let results = await getMovies().then((res) => {
-        
-            let itemUpdated = res;
+            let results = await getData();
 
-            return itemUpdated;
-        });
+            dispatch({
+                type: "FETCH",
+                payload: {
+                    data: results,
+                },
+            });
+        };
 
-        dispatch({
-            type: "FETCH",
-            payload: {
-                data: results,
-            },
-        });
-    };
-
-    fetchMovies();
+        fetchMovies();
     }, []);
 
     return (
