@@ -1,11 +1,5 @@
-import Card from '@/components/Card'
-import { reducer } from '@/components/reducer';
 import Head from 'next/head'
-import { useContext, useEffect, useReducer } from 'react'
-import { getMovies } from './api/movies';
-import { MovieProvider, MyContext } from '@/components/provider';
 import CardList from '@/components/CardList';
-
 
 export default function Home() {
 
